@@ -22,7 +22,7 @@ podman build -t citrix docker/citrix
 ### 3. Start the container:
 
 ```
-podman run -i -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --ipc=host  -t citrix
+podman run --rm --detach -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --ipc=host citrix
 ```
 
 ## TODO
