@@ -22,7 +22,7 @@ podman build -t citrix docker/citrix
 ### 3. Start the container:
 
 ```
-podman run --rm --detach -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --ipc=host citrix
+podman run --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/X0:/tmp/.X11-unix/X0 -v $XAUTHORITY:/xauth --ipc=host citrix
 ```
 
 ## TODO
@@ -30,5 +30,3 @@ podman run --rm --detach -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --
 - citrix currently uses X11, which is inherently unsafe and exposes all other X
   clients to Citrix. Run an Xwayland server in the container and let it connect
   to the hosts Wayland compositor.
-- firefox opens dialogs to allow to xdg-open an ica file. this should be done
-  automatically.

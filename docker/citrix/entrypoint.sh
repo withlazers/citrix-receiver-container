@@ -9,4 +9,10 @@
 ######################################################################
 
 #exec dbus-run-session -- firefox "$url" "$@"
-exec firefox --no-remote "$@"
+export XAUTHORITY=/xauth
+
+firefox --no-remote -CreateProfile 'User /profile'
+
+cp /prefs.js /profile/prefs.js
+
+exec firefox --no-remote --profile /profile "$@"

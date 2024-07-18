@@ -13,4 +13,5 @@ RUN printf "%s\n" 'APT::Get::Install-Recommends "false";' 'APT::Get::Install-Sug
 	xdg-mime default wfica.desktop application/x-ica
 
 COPY entrypoint.sh /
+COPY prefs.js /prefs.js
 ENTRYPOINT ["/entrypoint.sh"]
