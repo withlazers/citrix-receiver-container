@@ -1,9 +1,6 @@
 #!/bin/bash -x
 set -x
 
-ICA_ROOT_HOST="$HOME/.config/citrix-receiver-container/root/.ICAClient"
-mkdir -p $ICA_ROOT_HOST
-
 PULSE_AUDIO_BRIDGE_INDEX=""
 PULSE_SERVER_FOR_DOCKER="${PULSE_SERVER_FOR_DOCKER:-$PULSE_SERVER}"
 if [[ -z "${PULSE_SERVER_FOR_DOCKER}" ]]; then
@@ -25,7 +22,6 @@ podman run --rm \
   --net=host \
   -e PULSE_SERVER=$PULSE_SERVER_FOR_DOCKER \
   -e USE_FIREFOX_FOR_SELFSERVICE \
-  -v $ICA_ROOT_HOST:/root/.ICAClient \
   citrix "$@"
 
 if ! [[ -z "${PULSE_AUDIO_BRIDGE_INDEX}" ]]; then
