@@ -2,9 +2,12 @@ FROM debian:13
 
 COPY icaclient_*.deb /tmp
 
+# The Citrix deb only recommends ca-certificates and libwebkit2gtk-4.1-0, but needs both.
 RUN apt update && \
 	DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends -y \
+		ca-certificates \
 		firefox-esr \
+		libwebkit2gtk-4.1-0 \
 		nano \
 		openssl \
 		pulseaudio \

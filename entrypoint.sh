@@ -13,6 +13,9 @@ export XAUTHORITY=/xauth
 
 mkdir -p /root/.ICAClient/
 touch /root/.ICAClient/.eula_accepted
+# Stale sockets from the previous run in the persistent volume leave the webview white.
+find /root/.ICAClient -type s -delete
+rm -rf /root/.ICAClient/.tmp
 
 if ! [[ -z "${USE_FIREFOX_FOR_SELFSERVICE}" ]]; then
     mkdir -p /root/Downloads
